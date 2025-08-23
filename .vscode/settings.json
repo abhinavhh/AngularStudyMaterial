@@ -1,0 +1,9 @@
+{
+    "workbench.activityBar.location": "default",
+    "workbench.statusBar.visible": true,
+    "workbench.tree.enableStickyScroll": false,
+    "workbench.view.alwaysShowHeaderActions": false,
+    "workbench.view.showQuietly": {
+        "workbench.panel.output": false
+    }
+}
