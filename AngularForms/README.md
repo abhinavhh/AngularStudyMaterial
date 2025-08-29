@@ -1,27 +1,61 @@
-# AngularForms
+# Angular Template-driven Forms Documentation
+## 1. Importing FormsModule
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+To use template-driven forms, you must import FormsModule into your Angular application module:
+```typescript
+import { FormsModule } from '@angular/forms';
 
-## Development server
+@NgModule({
+  imports: [FormsModule]
+})
+export class AppModule {}
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 2. Creating a Local Reference for the Form
 
-## Code scaffolding
+In the template, assign a local reference variable to the form using the ngForm directive:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```html
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+  ...
+</form>
+```
 
-## Build
+- Here, #myForm="ngForm" creates a reference to the form.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- The reference is of type NgForm.
 
-## Running unit tests
+- The form can then be passed to the component method on submit (onSubmit(myForm)).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 3. Using ngModel on Form Controls
 
-## Running end-to-end tests
+Each input element must use the ngModel directive to bind its value to Angular’s form model:
+```html
+<input name="firstName" ngModel />
+<input name="lastName" ngModel />
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Always provide a name attribute when using ngModel.
 
-## Further help
+- This allows Angular to register the input as a control inside the form.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 4. Accessing the Form in the Component
+
+There are two ways to access the form in your component:
+
+(a) By passing the local reference
+```typescript
+onSubmit(form: NgForm) {
+  console.log(form.value);
+}
+```
+(b) By using @ViewChild
+
+Instead of passing the reference, you can access the form directly:
+```typescript
+@ViewChild('myForm') form!: NgForm;
+
+onSubmit() {
+  console.log(this.form.value);
+}
+```
