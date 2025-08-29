@@ -143,3 +143,37 @@ user = { country: "India" };
 ```
 
 ## Form Control Group
+
+`ngModelGroup` is used to group input elements inside a container.
+It creates a collection of form controls and tracks both the value and validity state of the entire group.
+
+- Use ngModelGroup="personalDetails" to define the group.
+
+- Assign a reference variable: #personalDetails="ngModelGroup".
+
+- You can then access the group’s state with:
+
+-- personalDetails.value → gets the values of all -- controls inside the group.
+
+-- personalDetails.valid / personalDetails.invalid → validity of the group.
+
+-- personalDetails.touched / personalDetails.untouched → touched state of the group.
+
+-- personalDetails.dirty / personalDetails.pristine → change state of the group.
+
+👉 Example:
+
+```html
+<div ngModelGroup="personalDetails" #personalDetails="ngModelGroup">
+  <label>First Name</label>
+  <input name="fname" ngModel required />
+
+  <label>Last Name</label>
+  <input name="lname" ngModel required />
+</div>
+
+<!-- Show error if group is invalid -->
+<div *ngIf="personalDetails.invalid && personalDetails.touched">
+  <small>Personal details are required.</small>
+</div>
+```
