@@ -136,3 +136,13 @@ input[type="checkbox"] {
     gap: 10px;
   }
 }
+
+
+/* for invalid field */
+input.ng-invalid.ng-touched {
+  border: red 1px solid;
+}
+
+small {
+  color: red;
+}

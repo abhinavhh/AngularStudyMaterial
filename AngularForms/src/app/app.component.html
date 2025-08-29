@@ -9,11 +9,13 @@
         <input
           type="text"
           id="fname"
-          name="fname"
+          name="firstName"
           placeholder="Your first name.."
           required
           ngModel
+          #fname="ngModel"
         />
+        <small *ngIf="fname.invalid && fname.touched">First Name is a required Field</small>
       </div>
 
       <!-- Last Name -->
@@ -22,7 +24,7 @@
         <input
           type="text"
           id="lname"
-          name="lname"
+          name="lastName"
           placeholder="Your last name.."
           required
           ngModel
@@ -38,6 +40,7 @@
           name="email"
           placeholder="Your email.."
           required
+          email
           ngModel
         />
       </div>
@@ -59,9 +62,18 @@
       <div class="form-group">
         <label>Gender</label>
         <div class="options-row">
-          <label><input type="radio" name="gender" value="male" required ngModel/> Male</label>
-          <label><input type="radio" name="gender" value="female" ngModel/> Female</label>
-          <label><input type="radio" name="gender" value="other" ngModel/> Other</label>
+          <label
+            ><input type="radio" name="gender" value="male" required ngModel />
+            Male</label
+          >
+          <label
+            ><input type="radio" name="gender" value="female" ngModel />
+            Female</label
+          >
+          <label
+            ><input type="radio" name="gender" value="other" ngModel />
+            Other</label
+          >
         </div>
       </div>
 
@@ -69,14 +81,23 @@
       <div class="form-group">
         <label>Hobbies <i>(Optional)</i></label>
         <div class="options-row">
-          <label><input type="checkbox" name="hobbies" value="sports" ngModel/> Sports</label>
-          <label><input type="checkbox" name="hobbies" value="music"ngModel /> Music</label>
-          <label><input type="checkbox" name="hobbies" value="movies" ngModel/> Movies</label>
+          <label
+            ><input type="checkbox" name="hobbies" value="sports" ngModel />
+            Sports</label
+          >
+          <label
+            ><input type="checkbox" name="hobbies" value="music" ngModel />
+            Music</label
+          >
+          <label
+            ><input type="checkbox" name="hobbies" value="movies" ngModel />
+            Movies</label
+          >
         </div>
       </div>
 
       <!-- Submit -->
-      <input type="submit" value="Submit" id="btn" />
+      <input type="submit" value="Submit" id="btn" [disabled]="!myForm.valid" />
     </form>
   </div>
 </div>
