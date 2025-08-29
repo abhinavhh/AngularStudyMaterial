@@ -146,3 +146,34 @@ input.ng-invalid.ng-touched {
 small {
   color: red;
 }
+
+.submitted-data {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.submitted-data h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.submitted-data p {
+  margin: 10px 0;
+  font-size: 15px;
+  color: #444;
+}
+
+.submitted-data strong {
+  display: inline-block;
+  width: 120px;  /* aligns the labels */
+  color: #222;
+}

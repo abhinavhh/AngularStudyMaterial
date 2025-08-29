@@ -177,3 +177,123 @@ It creates a collection of form controls and tracks both the value and validity 
   <small>Personal details are required.</small>
 </div>
 ```
+## Work with template radio button
+
+We can create and bind radio buttons in Angular template-driven forms in two ways:
+
+Using <input type="radio"> directly with [(ngModel)]
+
+Without explicit <input type="radio">, by binding a property in the component and updating it programmatically
+
+Example: Using [(ngModel)]
+<div class="form-group">
+  <label>Gender</label>
+  <label>
+    <input type="radio" name="gender" value="male" [(ngModel)]="userDetails.gender" required />
+    Male
+  </label>
+  <label>
+    <input type="radio" name="gender" value="female" [(ngModel)]="userDetails.gender" />
+    Female
+  </label>
+  <label>
+    <input type="radio" name="gender" value="other" [(ngModel)]="userDetails.gender" />
+    Other
+  </label>
+</div>
+
+
+Here, the property userDetails.gender in the TypeScript class will automatically update whenever the user selects a radio option.
+
+Example: Without Explicit <input type="radio">
+
+Instead of actual <input type="radio">, you can toggle a class (active/inactive) and set the property:
+
+<div class="gender-options">
+  <span (click)="userDetails.gender = 'male'" 
+        [class.active]="userDetails.gender === 'male'">Male</span>
+  <span (click)="userDetails.gender = 'female'" 
+        [class.active]="userDetails.gender === 'female'">Female</span>
+  <span (click)="userDetails.gender = 'other'" 
+        [class.active]="userDetails.gender === 'other'">Other</span>
+</div>
+
+
+In this case, the userDetails.gender is updated manually.
+
+.gender-options span {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  margin-right: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.gender-options span.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+setValue() and patchValue()
+
+Both are used to programmatically set form values, but with differences:
+
+setValue() → Must provide all controls in the form.
+
+patchValue() → Can update only a subset of controls.
+
+✅ Example:
+
+// setValue → must set every control
+this.form.setValue({
+  country: 'india',
+  gender: 'male',
+  hobbies: ['sports'],
+  personalDetails: {
+    firstName: 'John',
+    lastName: 'Smith',
+    email: 'john.smith@gmail.com'
+  }
+});
+
+// patchValue → update only specific controls
+this.form.form.patchValue({
+  personalDetails: {
+    firstName: 'Abhinav'
+  },
+  gender: 'other'
+});
+
+Accessing Values
+
+Once the form is submitted or during debugging, you can access values like:
+
+console.log(this.form.value);  
+
+
+Example structure of this.form.value:
+
+{
+  "personalDetails": {
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john@gmail.com"
+  },
+  "country": "india",
+  "gender": "male",
+  "hobbies": ["sports", "music"]
+}
+
+
+To access a specific field:
+
+this.form.value.personalDetails.firstName
+this.form.value.gender
+this.form.value.hobbies
+
+
+# Reactive Form
+
+We define the structure of the form in the component class. We create the form model with Form Groups, Form Controls, and Form Arrays.
+
+- We define the validation rule in component class
+- Then bind it into the HTML form in the template.

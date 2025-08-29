@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!submitted">
   <div class="form">
     <h2 id="registration">Registration Form</h2>
 
@@ -16,7 +16,9 @@
             ngModel
             #fname="ngModel"
           />
-          <small *ngIf="fname.invalid && fname.touched">First Name is a required Field</small>
+          <small *ngIf="fname.invalid && fname.touched"
+            >First Name is a required Field</small
+          >
         </div>
 
         <!-- Last Name -->
@@ -46,7 +48,10 @@
           />
         </div>
       </div>
-      <small *ngIf="personalDetails.invalid && personalDetails.touched">Some of the required field have no values</small>
+      <small *ngIf="personalDetails.invalid && personalDetails.touched"
+        >Some of the required field have no values</small
+      >
+      <button (click)="setDefaultValues()">Set Default</button>
 
       <!-- Country -->
       <div class="form-group">
@@ -64,20 +69,19 @@
       <!-- Gender -->
       <div class="form-group">
         <label>Gender</label>
-        <div class="options-row">
-          <label
-            ><input type="radio" name="gender" value="male" required ngModel />
-            Male</label
-          >
-          <label
-            ><input type="radio" name="gender" value="female" ngModel />
-            Female</label
-          >
-          <label
-            ><input type="radio" name="gender" value="other" ngModel />
-            Other</label
-          >
-        </div>
+        <span class="options-row" *ngFor="let gen of gender">
+          <label>
+            <input
+              id="{{ gen.id }}"
+              type="radio"
+              name="gender"
+              value="{{ gen.value }}"
+              required
+              [(ngModel)]="defaultGender"
+            />
+            {{ gen.value }}
+          </label>
+        </span>
       </div>
 
       <!-- Hobbies -->
@@ -101,7 +105,18 @@
 
       <!-- Submit -->
       <!-- <input type="submit" value="Submit" id="btn" [disabled]="!myForm.valid" /> -->
-       <input type="submit" value="Submit" id="btn" />
+      <input type="submit" value="Submit" id="btn" />
     </form>
   </div>
+</div>
+
+<!-- Display Submitted Data -->
+<div  *ngIf="submitted" class="submitted-data">
+  <h3>Submitted Details</h3>
+  <p><strong>First Name:</strong>{{userDetails.fname}}</p>
+  <p><strong>Last Name:</strong>{{userDetails.lname}}</p>
+  <p><strong>Email:</strong> {{userDetails.email}}</p>
+  <p><strong>Country:</strong>{{userDetails.country}} </p>
+  <p><strong>Gender:</strong>{{userDetails.gender}}</p>
+  <p><strong>Hobbies:</strong>{{userDetails.hobbies}}</p>
 </div>
