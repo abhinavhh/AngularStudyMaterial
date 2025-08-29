@@ -1,0 +1,42 @@
+.form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  max-width: 600px;
+  margin: 20px auto;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.form input,
+.form select {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.form input:focus,
+.form select:focus {
+  border-color: #3498db;
+}
+
+.form button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background-color: #3498db;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.form button:hover {
+  background-color: #2980b9;
+}

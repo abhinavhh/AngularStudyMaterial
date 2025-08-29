@@ -1,0 +1,30 @@
+# Ignore all node_modules in all sub-projects
+**/node_modules
+
+# Ignore all dist builds
+**/dist
+**/out-tsc
+**/.angular/cache
+**/tmp
+
+# Ignore environment.ts in every project
+**/src/environments/environment*.ts
+
+# Logs (anywhere)
+**/*.log
+
+# Coverage reports
+**/coverage
+
+# IDE/editor
+**/.vscode
+**/.idea
+**/*.suo
+**/*.ntvs*
+**/*.njsproj
+**/*.sln
+**/*.sw?
+
+# System
+**/.DS_Store
+**/Thumbs.db

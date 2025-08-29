@@ -1,0 +1,39 @@
+.container {
+  margin: 20px auto;
+  max-width: 500px;
+  background: #ffffff;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.container img {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f0f0f0;
+}
+
+.user-detail {
+  flex: 1;
+}
+
+.user-detail p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.user-detail p b {
+  color: #007bff;
+  font-weight: 600;
+}

@@ -1,0 +1,16 @@
+.page-container {
+  padding: 40px 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.page-container h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #1e293b;
+}
+
+.page-container p {
+  font-size: 18px;
+  color: #475569;
+  max-width: 600px;
+}

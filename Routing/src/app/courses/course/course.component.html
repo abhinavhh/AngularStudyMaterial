@@ -1,0 +1,36 @@
+<div class="course-container">
+  <div>
+    <img src="" alt="" />
+  </div>
+  <div>
+    <h1 *ngIf="!editMode">{{ course?.title }}</h1>
+    <div *ngIf="course as c">
+      <input type="text" [(ngModel)]="c.title" *ngIf="editMode" />
+    </div>
+  </div>
+  <div class="course-details">
+    <div>
+      <b>Author</b>
+      {{ course?.author }}
+    </div>
+    <div>
+      <b>Duration</b>
+      {{ course?.duration }}
+    </div>
+    <div>
+      <b>Type</b>
+      {{ course?.type }}
+    </div>
+    <div>
+      <h2>Price: $ {{ course?.price }}</h2>
+    </div>
+    <div>
+      <p>{{ course?.description }}</p>
+    </div>
+  </div>
+  <!-- <button [routerLink]="['/Courses/Course/', course?.id]" [queryParams]="{edit: true}">Edit</button> -->
+
+  <!-- PROGRAMMATIC QUERYPARAM PASSING -->
+  <button (click)="appendQueryParam()">Edit</button>
+  <button (click)="editMode = false" [routerLink]="['/Courses/Course', course?.id]">Update</button>
+</div>

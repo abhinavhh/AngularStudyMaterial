@@ -1,0 +1,19 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* left column smaller, right column wider */
+  gap: 20px;
+  padding: 20px;
+  background-color: #f4f6f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 1200px;
+  margin: 20px auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container > div {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}

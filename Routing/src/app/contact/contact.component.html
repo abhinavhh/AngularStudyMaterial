@@ -1,0 +1,25 @@
+<div class="page-container">
+  <h1>Contact Us</h1>
+  <form>
+    <input
+      type="text"
+      name="username"
+      placeholder="Your Name"
+      required
+      [(ngModel)]="username"
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="Your Email"
+      required
+      [(ngModel)]="usermail"
+    />
+    <textarea
+      placeholder="Your Message"
+      required
+      [(ngModel)]="message"
+    ></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</div>

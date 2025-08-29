@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.container button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #007bff;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.container button:hover {
+  background: #0056b3;
+}

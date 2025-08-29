@@ -1,0 +1,30 @@
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.user-div {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.user-name {
+  flex: 4; /* 80% */
+  padding: 12px 20px;
+  background-color: #eee;
+  font-weight: 500;
+}
+
+.user-status {
+  flex: 1; /* 20% */
+  padding: 12px;
+  text-align: center;
+  background-color: #FADBD8;
+  font-weight: 600;
+  color: #c0392b;
+}

@@ -1,0 +1,31 @@
+.page-container {
+  text-align: center;
+  padding: 60px 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.page-container h1 {
+  font-size: 40px;
+  color: #1e293b;
+}
+
+.page-container p {
+  font-size: 18px;
+  color: #475569;
+  margin: 15px 0 30px;
+}
+
+.page-container .btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #3b82f6;
+  color: white;
+  font-weight: 500;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.page-container .btn:hover {
+  background: #2563eb;
+}

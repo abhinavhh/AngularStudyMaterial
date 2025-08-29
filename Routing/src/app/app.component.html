@@ -1,0 +1,39 @@
+<div class="main-container">
+  <div class="nav-container">
+    <ul>
+      <li
+        [routerLinkActive]="'active'"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a routerLink="/">HOME</a>
+      </li>
+      <li [routerLinkActive]="'active'"><a routerLink="/About">ABOUT</a></li>
+      <li [routerLinkActive]="'active'"><a routerLink="/Contact">CONTACT</a></li>
+      <li [routerLinkActive]="'active'"><a routerLink="/Courses">COURSES</a></li>
+      <span><li (click)="logIn()">Login</li>
+      <li (click)="logOut()">LogOut</li></span>
+
+      <!-- <li
+        [routerLinkActive]="'active'"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a routerLink="" fragment="home">HOME</a>
+      </li>
+      <li [routerLinkActive]="'active'">
+        <a routerLink="" fragment="about">ABOUT</a>
+      </li>
+      <li [routerLinkActive]="'active'">
+        <a routerLink="" fragment="contact">CONTACT</a>
+      </li>
+      <li [routerLinkActive]="'active'"><a routerLink="" fragment="courses">COURSES</a></li> -->
+    </ul>
+  </div>
+  <div class="component-container">
+    <!-- <app-home id="home"></app-home>
+    <app-about id="about"></app-about>
+    <app-contact id="contact"></app-contact>
+    <app-courses id="courses"></app-courses> -->
+    <router-outlet></router-outlet>
+    <div class="spinner" *ngIf="displayLoadingIndicator"></div>
+  </div>
+</div>
