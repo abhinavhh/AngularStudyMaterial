@@ -99,7 +99,6 @@
 .form-group input[type="email"] {
   width: 100%;
   padding: 16px 20px;
-  border: 2px solid #e5e7eb;
   border-radius: 12px;
   font-size: 16px;
   font-family: inherit;
@@ -125,25 +124,8 @@
   color: #9ca3af;
 }
 
-/* Error Input Styles */
-.error-input {
-  border-color: #ef4444 !important;
-  background-color: rgba(239, 68, 68, 0.05) !important;
-}
-
-.error-input:focus {
-  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
-}
-
-.error-message {
-  color: #ef4444;
-  font-size: 13px;
-  margin-top: 8px;
-  padding: 8px 12px;
-  background: rgba(239, 68, 68, 0.1);
-  border-radius: 8px;
-  border-left: 3px solid #ef4444;
-  animation: slideDown 0.3s ease;
+input.ng-invalid.ng-touched {
+  border: red 2px solid;
 }
 
 @keyframes slideDown {

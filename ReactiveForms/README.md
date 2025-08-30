@@ -4,21 +4,21 @@ Reactive Forms provide a model-driven way to handle form inputs in Angular. Inst
 
 ## Steps to Create a Reactive Form
 
-- Import ReactiveFormsModule
+1. Import ReactiveFormsModule
 
-Add it to the imports array of your feature/module:
+Add it to the `imports` array of your feature/module:
 
 ```typescript
 import { ReactiveFormsModule } from "@angular/forms";
 ```
 
-- Create a FormGroup instance in your component
+2. Create a FormGroup instance in your component
 
-A FormGroup represents the entire form.
+- A FormGroup represents the entire form.
 
-Inside it, each FormControl represents a field.
+- Inside it, each FormControl represents a field.
 
-You can also set default values here.
+- You can also set default values here.
 
 ```typescript
 import { Component, OnInit } from "@angular/core";
@@ -48,9 +48,9 @@ export class UserFormComponent implements OnInit {
 }
 ```
 
-- Bind FormGroup and FormControl in the template
+3. Bind FormGroup and FormControl in the template
 
-Use formGroup on the <form> and formControlName on each input.
+Use `formGroup` on the `<form>` and `formControlName` on each input.
 
 ```html
 <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
@@ -79,9 +79,10 @@ Use formGroup on the <form> and formControlName on each input.
 </form>
 ```
 
-- Handling checkbox selections
+4. Handling checkbox selections
 
 Since checkboxes may store multiple values, update them manually inside the component:
+
 ```typescript
 onHobbyChange(event: any) {
 const hobbies = this.reactiveForm.get('hobbies')?.value || [];
@@ -94,6 +95,7 @@ hobbies.filter((h: string) => h !== event.target.value)
 }
 }
 ```
+
 ## Key Notes for Beginners
 
 - Always create a FormGroup in the component before binding in the template.
@@ -105,3 +107,40 @@ hobbies.filter((h: string) => h !== event.target.value)
 - You don’t need template references (#form="ngForm") like template-driven forms — just use your FormGroup instance.
 
 - Use (ngSubmit) to trigger form submission.
+
+# Reactive Form Validation
+
+Using Validators available and using it in the ts file
+
+```typescript
+firstName: new FormControl(null, [Validators.required]);
+```
+
+## Grouping of Form Control in Reactive Form
+
+We do this in typescript class
+
+this.reactiveForm = new FormGroup({
+personalDetails: new FormGroup({
+firstName: new FormControl(null, Validators.required),
+lastName: new FormControl(null, Validators.required),
+email: new FormControl(null, [Validators.required, Validators.email]),
+}),
+
+      gender: new FormControl('male'),
+      country: new FormControl('india'),
+      hobbies: new FormControl(null),
+    })
+
+}
+
+- in hmtl make firstname, secondName , email in the same div and formControName property of that div is assigned to 'personalDetails'.
+
+ngIf is used to give invalid message
+
+`ngIf="!reactiveForms.get('personalDetails.email').valid && reactiveForms.get('personalDetails.email').touched"`
+
+## Form Array in Reative Form
+
+form array is a way to manage the collection of Form Controls in Angular. The controls can be a FormGroup, FormControl, or another FormArray.
+

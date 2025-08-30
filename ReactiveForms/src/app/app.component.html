@@ -6,7 +6,7 @@
 
   <form (ngSubmit)="onSubmit()" class="modern-form" [formGroup]="reactiveForm">
     <!-- Name Section -->
-    <div class="form-row">
+    <div class="form-row" formGroupName="personalDetails">
       <!-- First Name -->
       <div class="form-group">
         <label for="firstName">First Name</label>
@@ -16,9 +16,6 @@
           placeholder="Enter your first name"
           formControlName="firstName"
         />
-        <div class="error-message">
-          {{ getFieldError("firstName") }}
-        </div>
       </div>
 
       <!-- Last Name -->
@@ -30,25 +27,25 @@
           placeholder="Enter your last name"
           formControlName="lastName"
         />
-        <div class="error-message">
-          {{ getFieldError("lastName") }}
+        
+      </div>
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email address"
+          formControlName="email"
+        />
+        <div>
+          <span style="color: red" *ngIf="!reactiveForm.get('personalDetails.email')?.valid && reactiveForm.get('personalDetails.email')?.touched">The email is not valid</span>
         </div>
+        
       </div>
     </div>
 
-    <!-- Email -->
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input
-        type="email"
-        id="email"
-        placeholder="Enter your email address"
-        formControlName="email"
-      />
-      <div class="error-message">
-        {{ getFieldError("email") }}
-      </div>
-    </div>
+    
 
     <!-- Gender -->
     <div class="form-group">
@@ -70,9 +67,7 @@
           <span class="radio-text">Other</span>
         </label>
       </div>
-      <div class="error-message">
-        {{ getFieldError("gender") }}
-      </div>
+      
     </div>
 
      <!-- Country -->
@@ -86,9 +81,7 @@
           </option>
         </select>
       </div>
-      <div class="error-message">
-        {{ getFieldError("country") }}
-      </div>
+      
     </div>
 
     <!-- Hobbies -->
@@ -99,9 +92,7 @@
           <input type="checkbox" [value]="hobby.value" formControlName="hobbies"/>{{ hobby.label}}
         </label>
       </div>
-      <div class="error-message">
-        {{ getFieldError("hobbies") }}
-      </div>
+      
     </div>
 
     <!-- Submit Button -->
