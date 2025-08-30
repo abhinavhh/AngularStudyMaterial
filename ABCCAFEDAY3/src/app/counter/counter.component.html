@@ -1,0 +1,19 @@
+<div class="counter-container">
+  <h1 class="counter-head">Beverage Counter</h1>
+
+  <p class="today-date">{{ today | date : "fullDate" }}</p>
+
+  <div class="input-field">
+    <label for="username" class="form-label">Customer Name</label>
+    <input
+      type="text"
+      [(ngModel)]="customerName"
+      class="form-control"
+      placeholder="Enter name"
+    />
+  </div>
+
+  <div *ngIf="customerName.length > 3">
+    <button class="btn" (click)="askOrder()" >Ask Order</button>
+  </div>
+</div>
