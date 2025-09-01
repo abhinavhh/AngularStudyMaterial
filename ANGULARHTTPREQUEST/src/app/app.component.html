@@ -1,0 +1,97 @@
+<div class="container">
+  <h1 class="page-title">Manage Products</h1>
+
+  <div class="content">
+    <!-- Left Side: Create Product Form -->
+    <form
+      class="form-section"
+      #productsForm="ngForm"
+      (ngSubmit)="onProductCreate(productsForm.value)"
+    >
+      <h2>Create Product</h2>
+
+      <div class="form-group">
+        <label for="name">Product Name</label>
+        <input
+          id="name"
+          type="text"
+          placeholder="Enter product name"
+          name="pname"
+          ngModel
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="desc">Description</label>
+        <input
+          id="desc"
+          placeholder="Enter product description"
+          name="desc"
+          ngModel
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          id="price"
+          type="number"
+          placeholder="Enter price"
+          name="price"
+          ngModel
+        />
+      </div>
+
+      <input
+        type="submit"
+        value="{{ editMode ? 'Update Product' : 'Add Product' }}"
+      />
+    </form>
+
+    <!-- Right Side: Product List -->
+    <div class="list-section">
+      <h2>All Products</h2>
+      <table id="products">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <td colspan="6" *ngIf="allProducts.length < 1 && !isFetching">
+            No Products Available
+          </td>
+          <tr class="error-message" *ngIf="errorMessage">
+            <td colspan="6" >
+              {{
+                errorMessage
+              }}
+            </td>
+          </tr>
+          <td colspan="6" *ngIf="isFetching && !errorMessage">
+            Loading...
+          </td>
+          <tr *ngFor="let product of allProducts; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ product.pname }}</td>
+            <td>{{ product.desc }}</td>
+            <td>${{ product.price }}</td>
+            <td>
+              <button (click)="deleteProduct(product.id!)">Delete</button>
+            </td>
+            <td><button (click)="onEditClick(product.id!)">Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr />
+      <br />
+      <input type="submit" value="Fetch Product" (click)="onProductsFetch()" />
+      <button (click)="deleteAllProducts()">Clear</button>
+    </div>
+  </div>
+</div>

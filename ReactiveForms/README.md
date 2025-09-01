@@ -144,3 +144,98 @@ ngIf is used to give invalid message
 
 form array is a way to manage the collection of Form Controls in Angular. The controls can be a FormGroup, FormControl, or another FormArray.
 
+We can group Form Controls in Angular forms in two ways:
+
+- Using FormGroup and
+- Using FormArray
+
+The difference is how they implement it. In FormGroup controls becomes a property of the FormGroup. Each control is represented as key-value pair.
+
+While in FormArray, the controls become part of an array.
+
+**Create Form Array**
+
+- user new FormArray([])
+
+## Custom Validation & Error Codes in Reactive Form
+
+noSpaceAllowed(control: AbstractControl) {
+if(control.value != null && control.value.indexOf(' ') != -1) {
+return {noSpaceAllowed: true}
+}
+return null;
+}
+
+firstName: new FormControl(null, [Validators.required, this.noSpaceAllowed]),
+
+<small \*ngIf="reactiveForm.get('personalDetails.firstName')?.errors?.['noSpaceAllowed']">First name cannot contain space</small>
+
+## Async Validator
+
+Must return a promise or a observable
+
+- Angular does not privde any built-in async validator
+- We use async validator when we need to send HTTP request to the server to check if the data is valid.
+  // CUTOM ASYNC VALIDATOR
+  emailNotAllowed(control: AbstractControl): Promise<any> | Observable<any>
+  {
+  const response = new Promise((resolve, reject) => {
+  setTimeout(() => {
+  if(control.value === 'abhinavponnu964531@gmail.com'){
+  resolve({emailNotAllowed: true})
+  }
+  else{
+  resolve(null);
+  }
+  }, 2000)
+  })
+  return response;
+  }
+
+## Value and Status Change
+
+The ValueChanges event is raised by the angular Forms whenever the value of the FromControl, FormGroup or FormArray changes.
+
+## SetValue and PatchbValue
+
+// SETVALUE
+// setTimeout(() => {
+
+    //   this.reactiveForm.setValue({
+    //     personalDetails: {
+    //       firstName: 'john',
+    //       lastName: 'cena',
+    //       email: 'abc@example.com',
+    //     },
+    //     gender: '',
+    //     country: 'india',
+    //     hobbies: '',
+    //     skills: []
+    //   })
+    // }, 1000)
+
+    // PATCHVALUE ( ONLY FOR THE PROPERTY WE NEED A DEFAULT VALUE )
+    setTimeout(() => {
+
+      this.reactiveForm.patchValue({
+        personalDetails: {
+          email: 'abc@example.com',
+        },
+        gender: 'male',
+        country: 'india',
+
+      })
+    }, 1000)
+
+**RESET FROM**
+this.reactiveForm.reset({
+personalDetails: {
+firstName: '',
+lastName: '',
+email: 'abc@example.com',
+},
+gender: 'male',
+country: 'india',
+hobbies: '',
+skills: []
+});

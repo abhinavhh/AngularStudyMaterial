@@ -1,4 +1,4 @@
-<div class="form-wrapper">
+<div class="form-wrapper myForm" [ngClass]="formStatus">
   <div class="form-header">
     <h1>User Registration</h1>
     <p>Fill out the form below to create your account</p>
@@ -16,6 +16,16 @@
           placeholder="Enter your first name"
           formControlName="firstName"
         />
+        <div>
+          <small
+            *ngIf="reactiveForm.get('personalDetails.firstName')?.errors?.['required'] && reactiveForm.get('personalDetails.firstName')?.touched"
+            >First name is required</small
+          >
+          <small
+            *ngIf="reactiveForm.get('personalDetails.firstName')?.errors?.['noSpaceAllowed']"
+            >First name cannot contain space</small
+          >
+        </div>
       </div>
 
       <!-- Last Name -->
@@ -27,7 +37,6 @@
           placeholder="Enter your last name"
           formControlName="lastName"
         />
-        
       </div>
       <!-- Email -->
       <div class="form-group">
@@ -39,16 +48,20 @@
           formControlName="email"
         />
         <div>
-          <span style="color: red" *ngIf="!reactiveForm.get('personalDetails.email')?.valid && reactiveForm.get('personalDetails.email')?.touched">The email is not valid</span>
+          <span
+            style="color: red"
+            *ngIf="
+              !reactiveForm.get('personalDetails.email')?.valid &&
+              reactiveForm.get('personalDetails.email')?.touched
+            "
+            >The email is not valid</span
+          >
         </div>
-        
       </div>
     </div>
 
-    
-
     <!-- Gender -->
-    <div class="form-group">
+    <div>
       <label class="section-label">Gender</label>
       <div class="radio-group">
         <label class="radio-label">
@@ -57,20 +70,19 @@
           <span class="radio-text">Male</span>
         </label>
         <label class="radio-label">
-          <input type="radio" value="female"  formControlName="gender"/>
+          <input type="radio" value="female" formControlName="gender" />
           <span class="radio-custom"></span>
           <span class="radio-text">Female</span>
         </label>
         <label class="radio-label">
-          <input type="radio" value="other" formControlName="gender"/>
+          <input type="radio" value="other" formControlName="gender" />
           <span class="radio-custom"></span>
           <span class="radio-text">Other</span>
         </label>
       </div>
-      
     </div>
 
-     <!-- Country -->
+    <!-- Country -->
     <div class="form-group">
       <label for="country">Country</label>
       <div class="select-wrapper">
@@ -81,7 +93,6 @@
           </option>
         </select>
       </div>
-      
     </div>
 
     <!-- Hobbies -->
@@ -89,10 +100,24 @@
       <label class="section-label">Hobbies</label>
       <div class="checkbox-group">
         <label *ngFor="let hobby of hobbiesOptions" class="checkbox-label">
-          <input type="checkbox" [value]="hobby.value" formControlName="hobbies"/>{{ hobby.label}}
+          <input
+            type="checkbox"
+            [value]="hobby.value"
+            formControlName="hobbies"
+          />{{ hobby.label }}
         </label>
       </div>
-      
+    </div>
+
+    <div formArrayName="skills">
+      <ng-container *ngFor="let skill of skills.controls; let i = index">
+        <input
+          type="text"
+          placeholder="add skill.."
+          formControlName="{{ i }}"
+        />
+      </ng-container>
+      <button type="button" (click)="addSkills()">Add Skills</button>
     </div>
 
     <!-- Submit Button -->
