@@ -50,6 +50,7 @@ export class AppComponent implements OnInit, OnDestroy{
     this.isFetching = true;
     this.productService.fetchProduct().subscribe((res) => {
       this.allProducts = res;
+      console.log(res);
       this.isFetching = false;
     }, (err) => {
       this.errorMessage = err.message;
