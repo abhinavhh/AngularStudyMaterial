@@ -1,0 +1,31 @@
+<div class="order-table">
+  <table>
+    <thead>
+      <tr colspan="3">
+        <th>Order Id</th>
+        <th>Customer</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of orderList; let i = index">
+        <td>{{ item.orderId }}</td>
+        <td>{{ item.customerName }}</td>
+        <td>
+          <button
+            class="consume"
+            (click)="setReviewVisible(item.orderId)"
+            *ngIf="!item.reviewSubmit"
+          >
+            Consume
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="buttons">
+    <button class="performance">Show Performance</button>
+  </div>
+</div>
+
+<app-consume-review *ngIf="showReviewPage"></app-consume-review>

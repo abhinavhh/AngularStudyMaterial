@@ -20,5 +20,8 @@ export class CounterComponent {
       this.userService.setUsername(this.customerName);
       this.router.navigate(['/order']);
     }
+    else {
+      alert('Please enter a valid username.');
+    }
   }
 }

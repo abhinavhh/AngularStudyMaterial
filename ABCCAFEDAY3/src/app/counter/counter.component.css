@@ -1,12 +1,15 @@
 .counter-container {
-  max-width: 400px;
-  margin: 80px auto;
-  padding: 30px;
+  width: 100%;
+  padding: 3em 3em;
   background: #ffffff;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .counter-head {

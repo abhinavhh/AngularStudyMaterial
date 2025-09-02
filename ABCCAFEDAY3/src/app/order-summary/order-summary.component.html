@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 style="font: bold; color: rgb(45, 48, 137); align-self: center">
+    Order Summary
+  </h1>
+  <div class="order-list">
+    <table>
+      <thead>
+        <tr>
+          <th>index</th>
+          <th>Customer Name</th>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of orderSummary; let i = index">
+        <tr *ngFor="let drink of item.name; let j = index">
+          <td>{{ i + 1 }}.{{ j + 1 }}</td>
+          <td>{{ item.username }}</td>
+          <td>{{ item.name[j] }}</td>
+          <td>{{ item.price[j] }}</td>
+          <td>{{ item.count[j] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

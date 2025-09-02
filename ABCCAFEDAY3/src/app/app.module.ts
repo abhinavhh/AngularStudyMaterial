@@ -9,13 +9,21 @@ import { FeedbackService } from './service/feedback.service';
 import { MenubarComponent } from './menubar/menubar.component';
 import { UserService } from './service/user.service';
 import { OrderComponent } from './order/order.component';
+import { OrderListComponent } from './order-list/order-list.component';
+import { ConsumeReviewComponent } from './consume-review/consume-review.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { PerformanceComponent } from './performance/performance.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CounterComponent,
     MenubarComponent,
-    OrderComponent
+    OrderComponent,
+    OrderListComponent,
+    ConsumeReviewComponent,
+    OrderSummaryComponent,
+    PerformanceComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<div class="review-container" *ngIf="isVisible">
+  <h3>How was your last order?</h3>
+  <div class="review-buttons">
+    <button class="btn good" (click)="submitReview('Good')">Good</button>
+    <button class="btn average" (click)="submitReview('Average')">Average</button>
+    <button class="btn poor" (click)="submitReview('Poor')">Poor</button>
+  </div>
+</div>
+
+<div class="thank-you" *ngIf="!isVisible">
+  <p>✅ Thank you for your feedback!</p>
+</div>

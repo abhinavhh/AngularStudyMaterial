@@ -1,21 +1,17 @@
 <div class="main-container">
   <nav class="nav-container">
     <ul>
-      <li
-        [routerLinkActive]="'active'"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <a routerLink="/">HOME</a>
+      <li>
+        <a routerLink="/" [routerLinkActive]="'active'"
+        [routerLinkActiveOptions]="{ exact: true }">HOME</a>
       </li>
-      <li [routerLinkActive]="'active'">
-        <a routerLink="/order">Take Order</a>
+      <li>
+        <a routerLink="/order-list"  [routerLinkActive]="'active'">Order List</a>
       </li>
-      <li [routerLinkActive]="'active'">
-        <a routerLink="/order-list">Order List</a>
+      <li>
+        <a routerLink="/performance"  [routerLinkActive]="'active'">Performance</a>
       </li>
-      <li [routerLinkActive]="'active'">
-        <a routerLink="/performance">Performance</a>
-      </li>
+      
     </ul>
   </nav>
 </div>

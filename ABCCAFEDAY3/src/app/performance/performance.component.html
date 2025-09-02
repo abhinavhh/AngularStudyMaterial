@@ -1,0 +1,11 @@
+<div class="container">
+  <h1 class="title">{{ message }}</h1>
+
+  <button class="stats-btn" (click)="showStats()">Show Review Stats</button>
+
+  <div class="stats-card" *ngIf="showStat">
+    <p><span class="label good">Good:</span> {{ stats.Good }}</p>
+    <p><span class="label average">Average:</span> {{ stats.Average }}</p>
+    <p><span class="label poor">Poor:</span> {{ stats.Poor }}</p>
+  </div>
+</div>

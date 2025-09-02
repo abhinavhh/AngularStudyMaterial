@@ -1,0 +1,90 @@
+/* === General Button Styles === */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* === Buttons Container === */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+/* === Individual Button Styles === */
+button.consume {
+  background: #28a745;
+  color: #fff;
+}
+
+button.consume:hover {
+  background: #1e7e34;
+}
+
+button.performance {
+  background: #ffc107;
+  color: #222;
+}
+
+button.performance:hover {
+  background: #e0a800;
+}
+
+/* === Table Styling === */
+.order-table {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #f4f6f8;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* === Responsive Layout === */
+@media (max-width: 600px) {
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .buttons button {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}

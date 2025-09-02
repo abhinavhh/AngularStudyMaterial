@@ -3,11 +3,16 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class FeedbackService {
 
-  feedbackData: { order: string, feedback: string }[] = [];
+  orderId!: number;
+  private feedbackData: { order: number, feedback: string }[] = [];
+  stats = {Good: 0, Average: 0, Poor: 0};
 
-  logFeedback(order: string, feedback: string) {
-    this.feedbackData.push({ order, feedback });
-    console.log("Feedback logged:", order, feedback);
+  logFeedback(feedback: string) {
+     if (!this.orderId) {
+      alert('Order ID not set before logging feedback');
+      return;
+    }
+    this.feedbackData.push({ order: this.orderId, feedback: feedback });
   }
 
   getFeedbackData() {
@@ -15,13 +20,31 @@ export class FeedbackService {
   }
 
   getReviewStats() {
-    const stats = {Good: 0, Average: 0, Poor: 0};
+    this.stats = { Good: 0, Average: 0, Poor: 0 };
     this.feedbackData.forEach(f => {
-      if (f.feedback in stats) {
-        stats[f.feedback as keyof typeof stats]++;
+      if (f.feedback in this.stats) {
+        this.stats[f.feedback as keyof typeof this.stats]++;
       }
     });
-    return stats;
+    return this.stats;
   }
+
+  getPerformanceMessage(): string {
+    const { Good, Average, Poor } = this.stats;
+    console.log(Good, Average, Poor);
+
+    if (Good > Average && Good > Poor) {
+      return "Excellent";
+    } 
+    else if (Average > Good && Average > Poor) {
+      return "Average Performance";
+    } 
+    else if (Poor > Good && Poor > Average) {
+      return "Needs Improvement";
+    }
+
+    return "No Reviews Yet";
+  }
+
 
 }

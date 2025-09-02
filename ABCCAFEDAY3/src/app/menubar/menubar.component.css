@@ -1,8 +1,7 @@
 .main-container {
-  display: flex;
-  flex-direction: column; /* stack nav on top */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: #f5f7fa;
+  margin-bottom: 5em;
 }
 
 /* Top Navigation */
@@ -10,6 +9,7 @@
   width: 100%;
   top: 0;
   left: 0;
+  position: fixed;
   background: #1e293b;
   padding: 12px 20px;
   display: flex;
