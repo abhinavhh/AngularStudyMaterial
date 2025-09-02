@@ -1,0 +1,81 @@
+.task-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.task-card {
+  background: #e9e8ef;
+  color: #161514;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.task-title {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #161514;
+}
+
+.task-desc {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.task-status,
+.task-priority,
+.task-due {
+  font-size: 13px;
+  margin: 2px 0;
+}
+
+.task-tags {
+  margin-top: 8px;
+}
+
+.tag {
+  display: inline-block;
+  background: #433D8B;
+  color: #C0C9EE;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+.task-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.task-actions button,
+.add-task button {
+  background: #433D8B;
+  color: #FFF2E0;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.task-actions button:hover,
+.add-task button:hover {
+  background: #C8ACD6;
+  color: #17153B;
+}
+
+.add-task {
+  text-align: center;
+  margin: 20px 0;
+}

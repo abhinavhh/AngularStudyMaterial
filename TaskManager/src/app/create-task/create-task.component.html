@@ -1,0 +1,58 @@
+<div class="form-container">
+    <h2>Add New Task</h2>
+    <form id="taskForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" required />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" name="status" required>
+          <option value="todo">To Do</option>
+          <option value="in_progress">In Progress</option>
+          <option value="done">Done</option>
+          <option value="blocked">Blocked</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="priority">Priority</label>
+        <select id="priority" name="priority">
+          <option value="">Select Priority</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="dueDate">Due Date</label>
+        <input type="date" id="dueDate" name="dueDate" />
+      </div>
+
+      <div class="form-group">
+        <label for="tags">Tags (comma separated)</label>
+        <input type="text" id="tags" name="tags" placeholder="e.g., frontend, urgent" />
+      </div>
+
+      <div class="subtasks-container" id="subtasksContainer">
+        <label>Subtasks</label>
+        <div class="subtask-item">
+          <input type="text" placeholder="Subtask title" name="subtaskTitle[]" />
+          <input type="checkbox" name="subtaskDone[]" /> Done
+          <button type="button" onclick="removeSubtask(this)">Remove</button>
+        </div>
+      </div>
+      <button type="button" onclick="addSubtask()">Add Subtask</button>
+
+      <div style="text-align:center; margin-top: 20px;">
+        <button type="submit">Create Task</button>
+      </div>
+    </form>
+  </div>

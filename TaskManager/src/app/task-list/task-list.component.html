@@ -1,0 +1,16 @@
+<div class="task-container">
+  <div class="task-card" *ngFor="let item of tasks">
+    <h2 class="task-title">{{ item.title }}</h2>
+    <p class="task-desc">{{ item.description }}</p>
+    <p class="task-status"><strong>Status:</strong> {{ item.status }}</p>
+
+    <div class="task-actions">
+      <button>Edit</button>
+      <button>Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="add-task">
+  <button>Create Task</button>
+</div>
