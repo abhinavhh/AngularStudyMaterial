@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
   reactiveForm!: FormGroup;
+  personalDetails!: FormGroup;
   formStatus!: any;
   
   countries = [
@@ -38,12 +39,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.reactiveForm = new FormGroup({
-      personalDetails: new FormGroup({
-        firstName: new FormControl(null, [Validators.required, this.noSpaceAllowed]),
-        lastName: new FormControl(null, [Validators.required, this.noSpaceAllowed]),
-        email: new FormControl(null, [Validators.required, Validators.email, this.noSpaceAllowed], this.emailNotAllowed),
-      }),
-      
       gender: new FormControl('male'),
       country: new FormControl('india'),
       hobbies: new FormControl(null),
@@ -51,6 +46,11 @@ export class AppComponent implements OnInit {
         new FormControl(null, Validators.required),
       ]),
     })
+    this.personalDetails =  new FormGroup({
+        firstName: new FormControl(null, [Validators.required, this.noSpaceAllowed]),
+        lastName: new FormControl(null, [Validators.required, this.noSpaceAllowed]),
+        email: new FormControl(null, [Validators.required, Validators.email, this.noSpaceAllowed], this.emailNotAllowed),
+      }),
 
     // LISTEN TO VALUECHANGE OF FIRSTNAME
     // this.reactiveForm.get('personalDetails.firstName')?.valueChanges.subscribe((value) => {
@@ -100,17 +100,13 @@ export class AppComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.reactiveForm);
-    this.reactiveForm.reset({
-      personalDetails: {
-          firstName: '',
-          lastName: '',
+    this.personalDetails.reset({
+          firstName: 'Ponnu',
+          lastName: 'JJJ',
           email: 'abc@example.com',
-        },
-        gender: 'male',
-        country: 'india',
-        hobbies: '',
-        skills: []
+        
     });
+    console.log(this.personalDetails);
   }
 
   get skills(): FormArray {

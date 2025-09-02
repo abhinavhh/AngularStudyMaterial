@@ -42,6 +42,7 @@ export class AppComponent implements OnInit, OnDestroy{
     }
     else {
       this.productService.updateProduct(this.currentProductId, products);
+      this.editMode = false;
     }
     
   }

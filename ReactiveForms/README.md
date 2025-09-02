@@ -155,7 +155,7 @@ While in FormArray, the controls become part of an array.
 
 **Create Form Array**
 
-- user new FormArray([])
+- user = new FormArray([])
 
 ## Custom Validation & Error Codes in Reactive Form
 

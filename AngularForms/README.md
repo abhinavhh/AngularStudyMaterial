@@ -244,6 +244,8 @@ patchValue() → Can update only a subset of controls.
 ✅ Example:
 
 // setValue → must set every control
+
+```typescript
 this.form.setValue({
   country: 'india',
   gender: 'male',
@@ -254,14 +256,18 @@ this.form.setValue({
     email: 'john.smith@gmail.com'
   }
 });
+```
 
 // patchValue → update only specific controls
+
+```typescript
 this.form.form.patchValue({
   personalDetails: {
     firstName: 'Abhinav'
   },
   gender: 'other'
-});
+});'
+```
 
 Accessing Values
 

@@ -6,7 +6,7 @@
 
   <form (ngSubmit)="onSubmit()" class="modern-form" [formGroup]="reactiveForm">
     <!-- Name Section -->
-    <div class="form-row" formGroupName="personalDetails">
+    <div class="form-row" [formGroup]="personalDetails">
       <!-- First Name -->
       <div class="form-group">
         <label for="firstName">First Name</label>
