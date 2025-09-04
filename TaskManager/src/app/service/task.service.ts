@@ -1,10 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Task } from "../models/task.model";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
 })
 export class TaskServive{
+
+    constructor(private http: HttpClient) {}
 
     tasks: Task[] = [
         {
@@ -99,8 +102,10 @@ export class TaskServive{
 
     }
 
-    createTask() {
-
+    createTask(task: Task) {
+        this.http.post<Task>('', task).subscribe(response => {
+            alert(response);
+        })
     }
 
     updateTask() {
