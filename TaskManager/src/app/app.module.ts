@@ -7,7 +7,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './home/home.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
-import { TaskServive } from './service/task.service';
+import { TaskService } from './service/task.service';
 import { TaskListComponent } from './task-list/task-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
       positionClass: 'toast-top-center',
     })
   ],
-  providers: [TaskServive, ],
+  providers: [TaskService, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

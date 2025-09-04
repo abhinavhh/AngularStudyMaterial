@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { TaskServive } from '../service/task.service';
+import { TaskService } from '../service/task.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-task',
@@ -11,7 +12,7 @@ export class CreateTaskComponent implements OnInit{
   createTaskForm!: FormGroup;
 
 
-  constructor(private taskService: TaskServive) {}
+  constructor(private taskService: TaskService, private toast: ToastrService) {}
 
   ngOnInit(): void {
     this.createTaskForm = new FormGroup({
@@ -35,8 +36,7 @@ export class CreateTaskComponent implements OnInit{
   // Form submission
   onSubmit() {
     if (this.createTaskForm.invalid) {
-      this.createTaskForm.markAllAsTouched();
-      return;
+      this.toast.error('Invalid Inputs');
     }
 
     const formValue = this.createTaskForm.value;
@@ -48,10 +48,10 @@ export class CreateTaskComponent implements OnInit{
 
     this.taskService.createTask(task);
 
-    console.log('New Task:', task);
+    this.toast.success('Task creation successfull');
 
     // Reset form and clear subtasks
-    this.createTaskForm.reset();
+    // this.createTaskForm.reset();
   }
 
   // Helper to show errors in template

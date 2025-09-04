@@ -1,14 +1,16 @@
 import { Injectable } from "@angular/core";
 import { Task } from "../models/task.model";
 import { HttpClient } from "@angular/common/http";
+import { map, Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
-export class TaskServive{
+export class TaskService{
 
     constructor(private http: HttpClient) {}
 
+    backendUri: string = 'https://angular-training-533a4-default-rtdb.firebaseio.com/tasks.json';
     tasks: Task[] = [
         {
         id: 1,
@@ -94,8 +96,22 @@ export class TaskServive{
         }
     ];
     
-    getTasks() {
+    getTasks(): Observable<Task[]>{
 
+        return this.http.get<{[key: string]: Task}>(this.backendUri).pipe(
+           map((res) => {
+            const tasks: Task[] = [];
+
+            for (const key in res) {
+                if(res.hasOwnProperty(key)) {
+                    tasks.push({
+                        ...res[key]
+                    });
+                }
+            }
+            return tasks;
+           })
+        )
     }
 
     getTaskById(id: string) {
@@ -103,7 +119,7 @@ export class TaskServive{
     }
 
     createTask(task: Task) {
-        this.http.post<Task>('', task).subscribe(response => {
+        this.http.post<Task>(this.backendUri, task).subscribe(response => {
             alert(response);
         })
     }
